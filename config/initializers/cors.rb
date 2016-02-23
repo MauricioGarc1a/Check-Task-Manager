@@ -1,7 +1,7 @@
-class TodoApi::Application
+class TaskApi::Application
   config.middleware.insert_before 0,  "Rack::Cors", debug: true, logger: (-> { Rails.logger }) do
     allow do
-      #PUT THE BITBALOON URL......
+      #PUT THE BITBALOON API IN...
       origins 'localhost:3000', '127.0.0.1:3000',
         /\Ahttp:\/\/192\.168\.0\.\d{1,3}(:\d+)?\z/
 
