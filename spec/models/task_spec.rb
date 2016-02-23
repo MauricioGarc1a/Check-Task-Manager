@@ -10,11 +10,12 @@ RSpec.describe Task, type: :model do
   end
 
   describe "allowed values for priority" do
-    it {should validate_inclusion_of(:priority). in_array(['high', 'normal', 'low']) }
+    it { should validate_inclusion_of(:priority). in_array(['high', 'normal', 'low']) }
   end
 
   describe "allowed values for duedate" do
-    it {should allow_value(/\d{4}.\d{2}.\d{2}/).for(:duedate) }
+    it { should allow_value(Date.tomorrow).for(:duedate) }
+    it { should_not allow_value(1.days.ago).for(:duedate) }
   end
 
 # it "accepts only a valid date" do
@@ -25,8 +26,6 @@ RSpec.describe Task, type: :model do
 # task.duedate.should == Date.parse(date)
 #
 # end
-
-
 
 #   describe "allow value of status to be true or false!!" do
 #   # This will work, but will give you a warning
