@@ -27,8 +27,6 @@ RSpec.describe Task, type: :model do
 #
 # end
 
-
-
 #   describe "allow value of status to be true or false!!" do
 #   # This will work, but will give you a warning
 #   it {should validate_inclusion_of(:status).in_array([true, false])}
