@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
-  validates :task, :duedate, :priority, :status, presence: true
+  validates :task, :duedate, :priority, presence: true
   validates_format_of :duedate, with: /\d{4}-\d{2}-\d{2}/, :message => "^Date must be in the following format: yyyy/mm/dd"
+  validates :status, exclusion: { in: [nil] }
 
   validates_inclusion_of :priority, in: %w(high normal low), allow_blank: true
   validate :valid_date

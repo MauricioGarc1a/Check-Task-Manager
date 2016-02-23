@@ -6,7 +6,9 @@ RSpec.describe Task, type: :model do
     it { is_expected.to validate_presence_of(:task) }
     it { is_expected.to validate_presence_of(:duedate) }
     it { is_expected.to validate_presence_of(:priority) }
-    it { is_expected.to validate_presence_of(:status) }
+  #  it { is_expected.to validate_presence_of(:status)}
+    it{ expect(:status).not_to be nil}
+
   end
 
   describe "allowed values for priority" do
