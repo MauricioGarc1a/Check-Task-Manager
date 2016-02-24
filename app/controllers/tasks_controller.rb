@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   def index
-    #  @tasks = Task.all
      render json: {
                meta: {
                  count: Task.count
@@ -10,7 +9,9 @@ class TasksController < ApplicationController
    end
 
   def create
-    if task = Task.create(task_params)
+    task = Task.new(task_params)
+    # todo.project = @project
+    if task.save
       render json: { task: task }
     else
       render json: {
@@ -48,6 +49,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task, :duedate, :priority, :status)
+    params.require(:task).permit(:task, :duedate, :status)
   end
 end
