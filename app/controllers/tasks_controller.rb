@@ -6,7 +6,14 @@ class TasksController < ApplicationController
 
   def create
     if task = Task.create(task_params)
-      render json: { task: task }
+      render json: {
+                meta: {
+                  count: Task.count
+                }
+                tasks:{
+                  task: task
+                  }
+                }
     else
       render json: {
         message: "Could not create Task",
