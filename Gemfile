@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.15'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -47,10 +47,14 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-bundler'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
+
   gem 'terminal-notifier-guard'
   gem 'shoulda-matchers'
 
+end
+
+group :test, :darwin do
+  gem 'rb-fsevent'
 end
 
 group :development do

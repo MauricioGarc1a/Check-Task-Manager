@@ -225,7 +225,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
-  pg (~> 0.15)
+  pg
   puma
   rack-cors
   rails (= 4.2.5.1)
