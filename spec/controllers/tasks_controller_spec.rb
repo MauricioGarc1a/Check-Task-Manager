@@ -2,9 +2,25 @@ require 'rails_helper'
 
 
 RSpec.describe TasksController, type: :controller do
-  let(:task) { Task.new(task: "Buy Some food", duedate: "2017-01-01", status: false) }
+  let!(:a_task) {Task.create! valid_attributes}
+  # fixins:
+  let(:valid_attributes) do
+    {
+      task: "My frist task",
+      duedate: "2016-04-01"
+    }
+  end
 
-  
+  # let(:invalid_attributes) do
+  #   {
+  #     task: "",
+  #     duedate: "2016-02-11",
+  #     priority: "normal"
+  #   }
+  # end
+  #
+  #
+
   describe "GET #index" do
     it "gives a JSON of all tasks" do
       get :index, format: :json
