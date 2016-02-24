@@ -1,19 +1,17 @@
 class TasksController < ApplicationController
   def index
-     @tasks = Task.all
-     render json: @tasks
+    #  @tasks = Task.all
+     render json: {
+               meta: {
+                 count: Task.count
+               },
+               tasks: Task.all
+             }
    end
 
   def create
     if task = Task.create(task_params)
-      render json: {
-                meta: {
-                  count: Task.count
-                },
-                tasks:{
-                  task: task
-                  }
-                }
+      render json: { task: task }
     else
       render json: {
         message: "Could not create Task",
@@ -50,6 +48,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task, :duedate, :status)
+    params.require(:task).permit(:task, :duedate, :priority, :status)
   end
 end
