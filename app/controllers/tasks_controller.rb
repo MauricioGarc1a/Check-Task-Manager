@@ -9,7 +9,7 @@ class TasksController < ApplicationController
       render json: {
                 meta: {
                   count: Task.count
-                }
+                },
                 tasks:{
                   task: task
                   }
