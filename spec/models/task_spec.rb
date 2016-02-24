@@ -5,15 +5,13 @@ RSpec.describe Task, type: :model do
   describe "validations" do
     it { is_expected.to validate_presence_of(:task) }
     it { is_expected.to validate_presence_of(:duedate) }
-    it { is_expected.to validate_presence_of(:priority) }
-  #  it { is_expected.to validate_presence_of(:status)}
-    it{ expect(:status).not_to be nil}
-
+    # it { is_expected.to validate_presence_of(:priority) }
+    # it { is_expected.to validate_presence_of(:status) }
   end
 
-  describe "allowed values for priority" do
-    it { should validate_inclusion_of(:priority). in_array(['high', 'normal', 'low']) }
-  end
+  # describe "allowed values for priority" do
+  #   it { should validate_inclusion_of(:priority). in_array(['high', 'normal', 'low']) }
+  # end
 
   describe "allowed values for duedate" do
     it { should allow_value(Date.tomorrow).for(:duedate) }
