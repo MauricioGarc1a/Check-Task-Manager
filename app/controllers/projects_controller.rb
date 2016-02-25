@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
         count: Project.count,
         page: 0
       },
-      projects: Project.order(:title)
+      projects: Project.order(id: :desc)
     }
   end
 
