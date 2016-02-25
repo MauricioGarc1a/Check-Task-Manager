@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
+  before_action :set_project
+
   def index
      render json: {
                meta: {
-                 count: Task.count
+                 count: @project.tasks.count
                },
-               tasks: Task.all
+               tasks: @project.tasks.all
              }
    end
 
@@ -48,7 +50,11 @@ class TasksController < ApplicationController
 
   private
 
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
   def task_params
-    params.require(:task).permit(:task_description, :duedate, :status)
+    params.require(:task).permit(:task_description, :duedate, :status, :project_id)
   end
 end
